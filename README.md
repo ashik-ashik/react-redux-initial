@@ -40,7 +40,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   and pass the *`store`* as `prop`.
 
 * [x] Well, all done! Now use the data globally on my application. Tp use the `store` in any `component` I have to write a single line of code. Here *`react-redux`* provide us a `hook` called ```useSelector``` which return a `callBack` function. So I have to call that function inside the *`useSelector`* function like:
-  ```c++
+  ```js
   const state = useSelector((state)=>state);
   ``` 
 
