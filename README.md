@@ -19,12 +19,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  * [x] Under the ***redux*** folder I should create a JS file for ***global store***, such as **``` store.js```**;
  * [x] Under the ***redux*** folder I should create a folder called ***reducers*** for ***reducer functions***, where I can put multiple reducer functions;
  * [x] Under the ***reducers*** folder I should create a file/ multiple files if needed called task relevent  reducer, such as ***Product_Reducer.js***;
- * [x] Into the ***Product_Reducer.js*** file I have to write the ***initialState*** and ***reducer*** function. I know the ***reducer*** function takes ***two*** parameters called ***`Previous State`*** and ***`action`***. Here, in redux, the previous state do not get by default, rather I have to assign the ***initialState*** to reducer previous state parameter, and `return` necessary action and than ***export*** the reducer function.
+ * [x] Into the ***Product_Reducer.js*** file I have to write the ***initialState*** and set a initial value:
+    ```js
+    {test:"TEST"}
+    ```
+    and ***reducer*** function. I know the ***reducer*** function takes ***two*** parameters called ***`Previous State`*** and ***`action`***. Here, in redux, the previous state do not get by default, rather I have to assign the ***initialState*** to reducer previous state parameter, and `return` necessary action and than ***export*** the reducer function.
  * [x] Back to the ```store.js``` and create a store. *import* ***createStore*** form **```redux```** and pass a ***reducer*** function as parameter: 
     ```js
     const store = createStore(productReducer);
     ```
-    and expoer the `store`.
+    and export the `store`.
 * [x] Okay store creation done. Now make this store available as a `global context`. For this **go** back to the ```App.js``` file and import ***Provider*** from *```react-redux```* and than wrap all *`components`* by the **Provider**:
   ```jsx
   <>
@@ -39,10 +43,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   ```
   and pass the *`store`* as `prop`.
 
-* [x] Well, all done! Now use the data globally on my application. Tp use the `store` in any `component` I have to write a single line of code. Here *`react-redux`* provide us a `hook` called ```useSelector``` which return a `callBack` function. So I have to call that function inside the *`useSelector`* function like:
+* [x] Well, all done! Now use the data globally on my application. To use the `store` in any `component` I have to write a single line of code. Here *`react-redux`* provide us a `hook` called ```useSelector``` which return a `callBack` function. So I have to call that function inside the *`useSelector`* function like:
   ```js
   const state = useSelector((state)=>state);
-  ``` 
+  console.log(state);
+  ```
+  ### ***Output***:
+  - - -
+  ```js
+  {test:"TEST"}
+  ```
 
 
 
