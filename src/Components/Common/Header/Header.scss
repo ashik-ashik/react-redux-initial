@@ -1,0 +1,31 @@
+
+@use "../../../StyleSheets/LayoutMixin/layoutMixin" as *;
+// @use "../../../StyleSheets/" as *;
+header.header{
+  background: #111;
+  nav{
+    @include flexing(row, space-between, center) ;
+    .logo{
+      h4{
+        text-transform: uppercase;
+        color: #eee;
+      }
+    }
+    ul.menu{
+      list-style-type: none;
+      @include flexing(row, flex-end, center);
+      li{
+        a{
+          display: block;
+          color: #eee;
+          padding: 10px 15px;
+          font-size: 13px;
+          transition: all 200ms;
+          &:hover{
+            color: #ff3c00;
+          }
+        }
+      }
+    }
+  }
+}

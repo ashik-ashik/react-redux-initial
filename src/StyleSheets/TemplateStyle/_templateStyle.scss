@@ -1,0 +1,13 @@
+%button {
+  border: none;
+  padding: 7px 15px;
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #eee;
+  background: linear-gradient(#3f0a85, #19003a);
+  &:hover{
+    background: linear-gradient(#13002c, #330274);
+  }
+}
