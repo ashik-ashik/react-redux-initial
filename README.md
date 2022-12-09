@@ -14,6 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
  In this project I have installed some additional packages to maintain the project easily. To maintain routes I have used React Router DOM ``` npm install react-router-dom```. For icons React-Icons ``` npm install react-icon```, and CSS pre-processor SASS ``` npm install sass```.
 
+### `File structure:`
  After installation necessary packages I need to stand and ***FOLDER*** structure. Here, one think should take in mind that I will create ***GLOBAL*** contexts. A standard ***FILE STRUCTURE*** link this:
  * [x] Create ***redux*** folder under the ***SRC*** folder;
  * [x] Under the ***redux*** folder I should create a JS file for ***global store***, such as **``` store.js```**;
@@ -23,7 +24,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     ```js
     {test:"TEST"}
     ```
-    and ***reducer*** function. I know the ***reducer*** function takes ***two*** parameters called ***`Previous State`*** and ***`action`***. Here, in redux, the previous state do not get by default, rather I have to assign the ***initialState*** to reducer previous state parameter, and `return` necessary action and than ***export*** the reducer function.
+    and write ***reducer*** function. I know the ***reducer*** function takes ***two*** parameters called ***`Previous State`*** and ***`action`***. Here, in redux, the previous state do not get by default, rather I have to assign the ***initialState*** to reducer previous state parameter, and `return` necessary action and than ***export*** the reducer function.
  * [x] Back to the ```store.js``` and create a store. *import* ***createStore*** form **```redux```** and pass a ***reducer*** function as parameter: 
     ```js
     const store = createStore(productReducer);
@@ -53,6 +54,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   ```js
   {test:"TEST"}
   ```
+* [x] 
 
 
 

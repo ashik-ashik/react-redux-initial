@@ -1,0 +1,39 @@
+@use '../../StyleSheets/TemplateStyle/templateStyle' as *;
+@use '../../StyleSheets/LayoutMixin/layoutMixin' as *;
+.product-cart{
+  .image{
+    padding: 15px;
+    background: #f7f7f7;
+    img{
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .content{
+    padding: 10px;
+    background: #eee;
+    h4{
+      color: #444;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    p{
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
+    h5{
+      color: #d84d0c;
+    }
+    .actions{
+      margin-top: 15px;
+      @include flexing (row, space-between, center);
+      button.add-to-cart{
+        @extend %button;
+      }
+      button.wish-list{
+        @extend %button2;
+      }
+    }
+  }
+}

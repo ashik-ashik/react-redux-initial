@@ -1,4 +1,4 @@
-%button {
+%commonButton {
   border: none;
   padding: 7px 15px;
   border-radius: 3px;
@@ -6,8 +6,21 @@
   font-weight: 600;
   cursor: pointer;
   color: #eee;
+  text-transform: uppercase;
+}
+%button {
+  @extend %commonButton;
   background: linear-gradient(#3f0a85, #19003a);
   &:hover{
     background: linear-gradient(#13002c, #330274);
   }
+};
+
+%button2{
+  @extend %commonButton;
+  background: linear-gradient(#b13800, #fa5001);
+  &:hover{
+    background: linear-gradient(#fa5001, #b13800);
+  }
+
 }

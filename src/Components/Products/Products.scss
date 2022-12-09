@@ -1,0 +1,4 @@
+@use '../../StyleSheets/LayoutMixin/layoutMixin' as *;
+.product-container{
+  @include griding (repeat(3,1fr), 20px 10px, start, start);
+}
