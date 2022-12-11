@@ -1,0 +1,26 @@
+@use "../../../StyleSheets/LayoutMixin/layoutMixin" as *;
+@use "../../../StyleSheets/TemplateStyle/templateStyle" as *;
+
+.filters-container{
+  padding: 15px 10px;
+  background: #f7f7f7e7;
+  ul{
+    @include flexing (row, flex-end, center);
+    list-style-type: none;
+    li{
+      padding: 0 2px;
+      button{
+        display: block;
+        @extend %commonButton;
+        border-radius: 30px;
+        background: #e0e0e0;
+        color: #333;
+      }
+      button.active{
+        background: #13043b;
+        color: #eee;
+
+      }
+    }
+  }
+}

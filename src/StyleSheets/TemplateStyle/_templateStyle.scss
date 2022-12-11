@@ -2,11 +2,15 @@
   border: none;
   padding: 7px 15px;
   border-radius: 3px;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 10px;
+  font-weight: 500;
   cursor: pointer;
   color: #eee;
   text-transform: uppercase;
+  &:active{
+    color: #eee;
+    background: #000 !important;
+  }
 }
 %button {
   @extend %commonButton;
@@ -18,9 +22,17 @@
 
 %button2{
   @extend %commonButton;
-  background: linear-gradient(#b13800, #fa5001);
+  background: linear-gradient(#e65908, #fa5001);
   &:hover{
     background: linear-gradient(#fa5001, #b13800);
+  }
+}
+
+%button3{
+  @extend %commonButton;
+  background: linear-gradient(#f01948, #b11d02);
+  &:hover{
+    background: linear-gradient(#b11d02, #f01948);
   }
 
 }

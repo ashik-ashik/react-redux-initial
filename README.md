@@ -54,6 +54,38 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   ```js
   {test:"TEST"}
   ```
+
+## `Redux DevTool Extention`
+* [x] At first I need to add the *`redux dev tool extention`* on the browser. 
+* [x] Now there is needed to install *redux dev tool extention* on the working react project as: 
+  ```
+  npm install --save @redux-devtools/extension
+  ```
+* [x] Now I can use `redux devtools extention` on my working project. To execute the extention it need to `import` on the `store.js` file as a function called `composeWithDevTools` and call the function. Like:
+  ```js
+  import { createStore } from 'redux';
+  import { composeWithDevTools } from '@redux-devtools/extension';
+
+  const store = createStore(reducer, composeWithDevTools());
+  ```
+* [x] All done! Now I can see how the state changes. It will be found at the `browser colsole` as **`Redux`**.
+
+
+## Multi Reducer function:
+If I have more than one reducer, What should I do to maintain or execute multi reducer?
+`redux` always expect single reducer function as parameter. For this I have to create a `root reducer` function. Here redux provide me a function to combine multiple reducer to convert single one. So, I have to create a file suppose called `rootReducer.js` and write some code like:
+  ```jsx
+  import {combineReducers} from 'redux';
+  //import necessary reducer functions;
+  const rootReducer = combineReducers({
+    cart: ProductReducer,
+    filter: FilterReducer,
+    //property name(should be relevent to reducer to understand easily): reducerFunction,
+  });
+  export default rootReducer;
+  ```
+  Now, bring a little bit change in the `store.js` file. When I have only one reducer, pass that reducer as parameter of `createStore()` function. Now instead of that I have to pass the `rootReducer`, that's it.
+
 * [x] 
 
 

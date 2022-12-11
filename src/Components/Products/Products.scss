@@ -1,4 +1,10 @@
 @use '../../StyleSheets/LayoutMixin/layoutMixin' as *;
 .product-container{
   @include griding (repeat(3,1fr), 20px 10px, start, start);
+  @media screen and (max-width:550px) {
+    @include griding (repeat(1,1fr), 20px, start, start);
+  }
+  @media screen and (max-width:900px) {
+    @include griding (repeat(2,1fr), 20px, start, start);
+  }
 }

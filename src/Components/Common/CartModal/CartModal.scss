@@ -1,0 +1,19 @@
+@use '../../../StyleSheets/LayoutMixin/layoutMixin' as *;
+.cart-modal{
+  width: 100%;
+  height: 50px;
+  background: #1b1b1b;
+  color: #15ff00;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999999;
+  @include flexing(row, center, center);
+  font-size: 12px;
+  transition: all .3s;
+  span{
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
+}
