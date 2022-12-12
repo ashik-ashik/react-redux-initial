@@ -56,7 +56,7 @@ const Home = () => {
         <h2 style={{margin:"20px 0"}}>Products:</h2>
 
         {
-          content.length ? <Products products={content} /> : <>
+          content?.length ? <Products products={content} /> : <>
             <div className="loader">
               <h2>{content?.loading || content.error}</h2>
             </div>
