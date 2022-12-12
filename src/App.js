@@ -6,8 +6,10 @@ import Header from './Components/Common/Header/Header';
 import AddProducts from './Components/Dashboard/AddProducts/AddProducts';
 import DashboardDefault from './Components/Dashboard/DashboardHome/DashboardDefault';
 import DashboardHome from './Components/Dashboard/DashboardHome/DashboardHome';
-import Products from './Components/Dashboard/Products/Products';
+import ProductList from './Components/Dashboard/ProductList/ProductList';
 import Home from './Components/Home/Home';
+import RecentlyViews from './Components/RecentlyViews/RecentlyViews';
+import SingleProduct from './Components/SingleProduct/SingleProduct';
 import WishList from './Components/WishList/WishList';
 import store from './redux/store';
 
@@ -23,9 +25,11 @@ function App() {
           <Route path='/wish-list' element={<WishList />} />
           <Route path='/dashboard' element={<DashboardHome />}>
             <Route path='' element={<DashboardDefault />} />
-            <Route path='product_list' element={<Products />} />
-            <Route path='add_product' element={<AddProducts />} />
+            <Route path='product_list' element={<ProductList />} />
+            <Route path='ADD_CONTENT' element={<AddProducts />} />
           </Route>
+          <Route path='/product/:id' element={<SingleProduct />} />
+          <Route path='/history' element={<RecentlyViews />} />
         </Routes>
       </BrowserRouter>
     </Provider>

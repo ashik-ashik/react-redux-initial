@@ -16,26 +16,34 @@ const Home = () => {
   const state = useSelector(state=>state);
   const {brands, stock} = state.filter.filters;
   const products = state.products.products;
+  // console.log(state.products.loader);
 
   let content;
-  if(products.length){
-    content = products;
-  };
-  if(products.length && (stock || brands.length)){
-    content = products
-      .filter(product => {
-        if(stock){
-          return product.stock > 0;
-        }
-        return product;
-      })
-      .filter(product => {
-        if(brands.length){
-          return brands.includes(product.category)
-        }
-        return product;
-      })
-  };
+  if(state.products.loader){
+    content = {loading:"Loading......"}
+  }else if (state.products.error){
+    content = {error:state.products.error}
+  }else{
+    if(products.length){
+      content = products;
+    };
+    if(products.length && (stock || brands.length)){
+      content = products
+        .filter(product => {
+          if(stock){
+            return product.stock > 0;
+          }
+          return product;
+        })
+        .filter(product => {
+          if(brands.length){
+            return brands.includes(product.category)
+          }
+          return product;
+        })
+    };
+
+  }
 
   return (
     <article>
@@ -45,8 +53,16 @@ const Home = () => {
       }
       <Filters />
       <section className="container">
-        <h2>Products:</h2>
-        <Products products={content} />
+        <h2 style={{margin:"20px 0"}}>Products:</h2>
+
+        {
+          content.length ? <Products products={content} /> : <>
+            <div className="loader">
+              <h2>{content?.loading || content.error}</h2>
+            </div>
+          </>
+        }
+        
       </section>
     </article>
   );

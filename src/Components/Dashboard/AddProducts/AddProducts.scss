@@ -21,6 +21,10 @@
       border: 1px solid #5e5e5e;
       padding: 10px;
       font-size: 13px;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+          display: none;
+      }
     }
     label{
       font-size: 12px;
@@ -33,7 +37,7 @@
   }
 
   .clear-btn{
-    @extend %button2;
+    @extend %button3;
   }
   button[type="submit"]{
     @extend %button;

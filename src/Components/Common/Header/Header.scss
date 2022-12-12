@@ -28,6 +28,10 @@ header.header{
           &:hover{
             color: #ff3c00;
           }
+          &.active{
+            color: #ff3c00;
+            background: #252525c0;
+          }
         }
       }
     }

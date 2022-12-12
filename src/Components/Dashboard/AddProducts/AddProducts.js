@@ -1,11 +1,16 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import postProduct from '../../../redux/thunk/postProduct/postProduct';
 import "./AddProducts.scss";
 
 const AddProducts = () => {
   const {register, handleSubmit, reset} = useForm();
-  const addProduct = data => {
-
+  const dispatch = useDispatch();
+  const getFormData = product => {
+    // console.log(data);
+    dispatch(postProduct(product));
+    reset();
   }
 
   return (
@@ -13,7 +18,7 @@ const AddProducts = () => {
       <div className="section-title">
         <h2>Add New Product</h2>
       </div>
-      <form onSubmit={handleSubmit(addProduct)}>
+      <form onSubmit={handleSubmit(getFormData)}>
         <div className="input-group">
           <label htmlFor="name">Product Name:</label>
           <input {...register('name')} type="text" id='name' placeholder='Product Name' />
@@ -26,11 +31,11 @@ const AddProducts = () => {
         <div className="input-grid">
           <div className="input-group">
             <label htmlFor="price">Price $</label>
-            <input {...register('price')} type="text" id='price' inputMode='number' placeholder='Price' />
+            <input {...register('price')} type="number" id='price' inputMode='number' placeholder='Price' />
           </div>
           <div className="input-group">
             <label htmlFor="stock">Stock</label>
-            <input {...register('stock')} min={1} type="text" id="stock" inputMode='number' placeholder='Stock' />
+            <input {...register('stock')} min={1} type="number" id="stock" inputMode='number' placeholder='Stock' />
           </div>
         </div>
 
@@ -53,11 +58,11 @@ const AddProducts = () => {
         <div className="input-grid">
           <div className="input-group">
             <label htmlFor="star">Star</label>
-            <input {...register('star')} type="text" id="star" placeholder='Star' />
+            <input {...register('star')} type="number" id="star" placeholder='Star' />
           </div>
           <div className="input-group">
             <label htmlFor="starCount">Star Count</label>
-            <input {...register('starCount')} type="text" id="starCount" placeholder='Star Count' />
+            <input {...register('starCount')} type="number" id="starCount" placeholder='Star Count' />
           </div>
         </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import "./Header.scss";
 
 const Header = () => {
@@ -12,10 +12,11 @@ const Header = () => {
           <h4>Logo</h4>
         </div>
         <ul className='menu'>
-          <li><Link to="/" >Home</Link></li>
-          <li><Link to="/cart" >Cart <sup>{cart.length >0 && cart.length}</sup></Link></li>
-          <li><Link to="/wish-list" >Wish List</Link></li>
-          <li><Link to="/dashboard" >Dashboard</Link></li>
+          <li><NavLink to="/" >Home</NavLink></li>
+          <li><NavLink to="/cart" >Cart <sup>{cart.length >0 && cart.length}</sup></NavLink></li>
+          <li><NavLink to="/wish-list" >Wish List</NavLink></li>
+          <li><NavLink to="/history" >RecentViews</NavLink></li>
+          <li><NavLink to="/dashboard" >Dashboard</NavLink></li>
         </ul>
       </nav>
     </header>

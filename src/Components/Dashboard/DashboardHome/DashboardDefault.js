@@ -8,7 +8,7 @@ const DashboardDefault = () => {
   const seller = products.filter((product, i) => products.findIndex(item => item?.seller === product?.seller) === i);
 
   const sum = (prev, current) => {
-    return prev + current.star;
+    return prev + parseInt(current.star);
   };
   const totalStar = products?.reduce(sum, 0);
 

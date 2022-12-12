@@ -20,7 +20,7 @@ const DashboardHome = () => {
           <li><Link to='/'>Back to Home</Link></li>
           <li><Link className={pathname.split('/').length === 2 ? 'active':'link'} to='/dashboard'>Dashboard Home</Link></li>
           <li><NavLink to='product_list'>Product List</NavLink></li>
-          <li><NavLink to='add_product'>Add Product</NavLink></li>
+          <li><NavLink to='ADD_CONTENT'>Add Product</NavLink></li>
         </ul>
       </aside>
       <section className='dashboard-content'>

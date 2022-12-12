@@ -1,8 +1,8 @@
-import { TOGGLE_BRAND, TOGGLE_STOCK } from "../ActionTypes/ActionTypes"
+import { TOGGLE_CATEGORY, TOGGLE_STOCK } from "../ActionTypes/ActionTypes"
 
 export const filterByBrand = (brand) => {
   return {
-    type: TOGGLE_BRAND,
+    type: TOGGLE_CATEGORY,
     payload: brand
   }
 };
