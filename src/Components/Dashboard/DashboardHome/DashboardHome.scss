@@ -1,0 +1,104 @@
+
+@use "../../../StyleSheets/LayoutMixin/layoutMixin" as *;
+@use "../../../StyleSheets/TemplateStyle/templateStyle" as *;
+
+.dashboard-home{
+  @include griding((200px 1fr), 10px, start, stretch );
+  height: calc(100vh - 40px);
+  .dashboard-sidebar{
+    background: #e1e1e1;
+    h4{
+      text-align: center;
+      margin: 15px 0;
+    }
+    ul.sidebar{
+      list-style-type: none;
+      li{
+        width: 100%;
+        a{
+          display: block;
+          padding: 10px;
+          font-size: 12px;
+          letter-spacing: -1px;
+          color: #222;
+          transition: all .3s;
+          &.active,
+          &:hover{
+            background: #eee;
+            padding-left: 15px;
+          }
+          &.active::before{
+            content: '\2605';
+            margin-right: 3px;
+          }
+
+        }
+      }
+    }
+  }
+
+
+  .dashboard-content{
+    height: 100%;
+    overflow-y: auto;
+    
+  }
+  
+}
+
+.dashboard-default{
+  padding: 30px 10px 30px 0;
+  
+  .section-title{
+    @extend %section-title;
+  }
+  
+  .dashboard-overview{
+    @include griding(repeat(3,1fr), 20px 10px, start, center);
+    
+    div.item{
+      height: 200px;
+      background: #eee;
+      border-radius: 7px;
+      box-shadow: #00000033 0px 5px 15px 0px;
+      @include flexing(column, center, center);
+      h3{
+        text-align: center;
+        margin-bottom: 7px;
+      }
+      p{
+        font-size: 10px;
+        text-align: center;
+      }
+    }
+    div.products-count{
+      background: #3a0055;
+      color: #eee;
+    }
+    div.in-stock-count{
+      background: #006e25;
+      color: #eee;
+    }
+    div.stock-out-count{
+      background: #ff4800;
+      color: #eee;
+    }
+    div.camera{
+      background: #01533b;
+      color: #eee;
+    }
+    div.laptop{
+      background: #9c0060;
+      color: #eee;
+    }
+    div.android{
+      background: #020072;
+      color: #eee;
+    }
+    div.average-roduct{
+      color: #eee;
+      background: rgb(65, 0, 0);
+    }
+  }
+
+}

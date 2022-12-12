@@ -4,13 +4,13 @@ import Products from '../Products/Products';
 import "./Cart.scss";
 
 const Cart = () => {
-  const cart = useSelector(state=> state.cart.cart);
-  console.log(cart);
+  const cart = useSelector(state=> state.products.cart);
+  let content = cart.sort((a,b)=> a.cartPosition - b.cartPosition)
   return (
     <article>
       <section className="container">
         Cart
-        <Products products={cart} />
+        <Products products={content} />
       </section>
     </article>
   );

@@ -16,7 +16,7 @@ const ProductsCard = ({product}) => {
       </div>
       <div className="content">
         <h4>{product?.name.split('').splice(0,50)}</h4>
-        <p><span>Seller: {product?.seller}</span> || <span>Category: {product?.category}</span></p>
+        <p><span>Seller: {product?.seller}</span> || <span>Category: {product?.category.toUpperCase()}</span></p>
         <h5>$ {product?.price}</h5>
         <div className="actions">
           {!pathname.includes('cart') && !pathname.includes('wish-list') && <>

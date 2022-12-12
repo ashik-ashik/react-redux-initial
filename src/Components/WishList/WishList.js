@@ -4,7 +4,7 @@ import Products from '../Products/Products';
 import "./WishList.scss";
 
 const WishList = () => {
-  const wishList = useSelector(state=> state.cart.wishList)
+  const wishList = useSelector(state=> state.products.wishList)
   return (
     <article>
       <section className="container">

@@ -1,6 +1,7 @@
-import { ADD_TO_CART, ADD_TO_WISHLIST, CART_MODAL, REMOVE_FROM_CART, REMOVE_FROM_WISHLIST } from "../ActionTypes/ActionTypes";
+import { ADD_TO_CART, ADD_TO_WISHLIST, CART_MODAL, LOAD_DATA, REMOVE_FROM_CART, REMOVE_FROM_WISHLIST } from "../ActionTypes/ActionTypes";
 
 const initialState = {
+  products: [],
   cart : [],
   wishList:[],
   cartModal:false,
@@ -11,6 +12,11 @@ const productReducer = (state = initialState, action) => {
   const isSelected = state.cart.find(product => product.key === action.payload.key);
   const oldProducts = state.cart.filter(product => product.key !== action.payload.key);
   switch(action.type){
+    case LOAD_DATA:
+      return {
+        ...state,
+        products: action.payload
+      }
     case ADD_TO_CART:
       if(isSelected){
         isSelected.quantity= isSelected.quantity + 1;

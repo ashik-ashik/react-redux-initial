@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CART_MODAL } from '../../../redux/ActionTypes/ActionTypes';
 
 const CartModal = () => {
-  const state = useSelector(state=> state.cart);
+  const state = useSelector(state=> state.products);
   const dispatch = useDispatch();
   const closeModal = ()=> {
     setTimeout(()=>{

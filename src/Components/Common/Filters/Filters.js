@@ -1,26 +1,27 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterByBrand, filterByStock } from '../../../redux/actionCreator/filterActions';
 import './Filters.scss';
 
 const Filters = () => {
-  const toggleClassName = (e)=>{
-    const buttons = document.getElementsByClassName('filer-btn');
-    for(let i =0; i<buttons.length; i++){
-      buttons[i].className='filer-btn'
-    }
-    e.target.classList = 'filer-btn active';
-  }
+  const filters = useSelector(state=> state.filter);
+  const dispatch = useDispatch();
+  const {brands, stock} = filters.filters;
   return (
     <div className="container">
       <div className='filters-container'>
         <ul>
           <li>
-            <button onClick={(e)=>{toggleClassName(e);}} className='filer-btn active'>In Stoke</button>
+            <button onClick={()=>dispatch(filterByStock())} className={`filer-btn ${stock ? 'active' : null}`}>In Stoke</button>
           </li>
           <li>
-            <button onClick={(e)=>{toggleClassName(e);}} className='filer-btn'>Camera</button>
+            <button onClick={()=>dispatch(filterByBrand('camera'))} className={`filer-btn ${brands.includes('camera') ? 'active' : null}`}>Camera</button>
           </li>
           <li>
-            <button onClick={(e)=>{toggleClassName(e);}} className='filer-btn'>Laptop</button>
+            <button onClick={()=>dispatch(filterByBrand('laptop'))} className={`filer-btn ${brands.includes('laptop') ? 'active' : null}`}>Laptop</button>
+          </li>
+          <li>
+            <button onClick={()=>dispatch(filterByBrand('android'))} className={`filer-btn ${brands.includes('android') ? 'active' : null}`}>Android</button>
           </li>
         </ul>
       </div>

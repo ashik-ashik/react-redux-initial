@@ -1,32 +1,52 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import fetchProducts from '../../redux/thunk/fetchProducts/fetchProducts';
 import CartModal from '../Common/CartModal/CartModal';
 import Filters from '../Common/Filters/Filters';
 import Products from '../Products/Products';
 import "./Home.scss";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
   useEffect(()=>{
-    fetch('./products.JSON')
-    .then(res => res.json())
-    .then(result => setProducts(result))
-    .catch((error)=>{
-      setProducts(error);
-    })
-  },[]);
-  const state = useSelector(state=>state.cart);
-  console.log(state.cart);
+    dispatch(fetchProducts())
+  },[dispatch]);
+
+  const state = useSelector(state=>state);
+  const {brands, stock} = state.filter.filters;
+  const products = state.products.products;
+
+  let content;
+  if(products.length){
+    content = products;
+  };
+  if(products.length && (stock || brands.length)){
+    content = products
+      .filter(product => {
+        if(stock){
+          return product.stock > 0;
+        }
+        return product;
+      })
+      .filter(product => {
+        if(brands.length){
+          return brands.includes(product.category)
+        }
+        return product;
+      })
+  };
+
   return (
     <article>
       
       {
-        state.cartModal && <CartModal />
+        state.products.cartModal && <CartModal />
       }
       <Filters />
       <section className="container">
         <h2>Products:</h2>
-        <Products products={products} />
+        <Products products={content} />
       </section>
     </article>
   );

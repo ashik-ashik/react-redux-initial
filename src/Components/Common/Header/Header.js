@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import "./Header.scss";
 
 const Header = () => {
-  const cart = useSelector(state=> state.cart.cart);
+  const cart = useSelector(state=> state.products.cart);
   return (
     <header className='header'>
       <nav className='container'>
@@ -15,6 +15,7 @@ const Header = () => {
           <li><Link to="/" >Home</Link></li>
           <li><Link to="/cart" >Cart <sup>{cart.length >0 && cart.length}</sup></Link></li>
           <li><Link to="/wish-list" >Wish List</Link></li>
+          <li><Link to="/dashboard" >Dashboard</Link></li>
         </ul>
       </nav>
     </header>

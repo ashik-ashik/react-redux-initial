@@ -36,3 +36,32 @@
   }
 
 }
+
+// section-title
+%section-title{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  h2{
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: 600;
+    position: relative;
+    &::after{
+      content: '';
+      width: 100px;
+      height: 2px;
+      background: #f00;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 10px;
+      outline: 1px solid red;
+      outline-offset: 2px;
+    }
+  }
+}
