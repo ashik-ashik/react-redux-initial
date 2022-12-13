@@ -1,6 +1,6 @@
 # React Redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Visit Now](https://redux-emajon.netlify.app/).
 
 ## 🚀 Tech Stack
 
