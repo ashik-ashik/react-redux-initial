@@ -10,28 +10,100 @@ header.header{
   nav{
     @include flexing(row, space-between, center) ;
     .logo{
+      padding: 8px 0;
       h4{
         text-transform: uppercase;
         color: #eee;
       }
     }
-    ul.menu{
-      list-style-type: none;
-      @include flexing(row, flex-end, center);
-      li{
-        a{
+    .menu-container{
+      ul.menu{
+        list-style-type: none;
+        @include flexing(row, flex-end, center);
+        .close{
+          display: none;
+        }
+        h3{
+          display: none;
+        }
+        li{
+          a{
+            display: block;
+            color: #eee;
+            padding: 10px 15px;
+            font-size: 13px;
+            transition: all 200ms;
+            &:hover{
+              color: #ff3c00;
+            }
+            &.active{
+              color: #ff3c00;
+              background: #252525c0;
+            }
+          }
+        }
+      }
+      
+      .toggler{
+        color: #eee;
+        *{
+          cursor: pointer;
+        }
+        @media screen and (min-width:700px) {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width:700px) {
+        ul.menu{
+          display: none;
+        }
+        ul.menu-active{
           display: block;
-          color: #eee;
-          padding: 10px 15px;
-          font-size: 13px;
-          transition: all 200ms;
-          &:hover{
-            color: #ff3c00;
+          padding-top: 30px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 200px;
+          background: #000;
+          height: 100vh;
+          @include flexing(column, flex-start, flex-start);
+          animation: menu .5s ease-in-out 1;
+          .close{
+            display: inherit;
+            color: #eee;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
           }
-          &.active{
-            color: #ff3c00;
-            background: #252525c0;
+          h3{
+            display: block;
+            color: #eee;
+            margin-bottom: 20px;
+            padding-left: 20px;
+            font-size: 16px;
           }
+          li{
+            width: 100%;
+            a{
+              padding: 15px 25px;
+            }
+          }
+
+        }
+        @keyframes menu {
+          0%{
+            right: -100%;
+            opacity: 0;
+          }
+          100%{
+            right: 0;
+            opacity: 1;
+          }
+        }
+        .toggler{
+          display: block;
         }
       }
     }

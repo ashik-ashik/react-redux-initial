@@ -1,7 +1,7 @@
 @use '../../../StyleSheets/LayoutMixin/layoutMixin' as *;
 @use "../../../StyleSheets/TemplateStyle/templateStyle" as *;
 .add-product{
-  padding: 30px 10px 30px 0;
+  padding: 30px 10px;
 
   .section-title{
     @extend %section-title;

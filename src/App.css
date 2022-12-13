@@ -10,14 +10,27 @@
   width: 100vw;
   height: 100vh;
  display: flex;
+ flex-direction: column;
  justify-content: center;
  align-items: center;
+ padding: 10vh;
  background: #000;
  z-index: 999999;
+ 
 }
 .loader > * {
   color: #eee;
 }
+.loader > p small{
+  color: darkorange;
+}
+.loader > p {
+  margin-top: 15px;
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.5em;
+}
+
 a{
   text-decoration: none;
 }

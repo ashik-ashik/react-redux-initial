@@ -72,12 +72,17 @@
               font-weight: 600;
               font-size: 11px;
             }
-            button.delete-button{
+            button{
               background: transparent;
               border: none;
               cursor: pointer;
               outline: none;
+            }
+            button.delete-button{
               color: #c72121;
+            }
+            button.edit-button{
+              color: #007694;
             }
           }
           &:nth-child(even){

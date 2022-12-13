@@ -2,7 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './ProductList.scss';
 import {RiDeleteBin5Fill} from 'react-icons/ri';
+import {FiEdit} from 'react-icons/fi';
 import deleteProduct from '../../../redux/thunk/deleteProduct/deleteProduct';
+import { Link } from 'react-router-dom';
 
 const ProductList = () => {
   const state = useSelector(store=> store);
@@ -52,7 +54,10 @@ const ProductList = () => {
                 <td><span className={product.stock >0 ? 'in-stock' : 'stock-out'}>{product.stock > 0 ? 'In Stock':'Stock Out'}</span></td>
                 <td><span className="price">${product.price}</span></td>
                 <td>{product.seller}</td>
-                <td><button className='delete-button' onClick={()=> dispatch(deleteProduct(product._id))}><RiDeleteBin5Fill size={25}/></button></td>
+                <td>
+                  <button className='delete-button' onClick={()=> dispatch(deleteProduct(product._id))}><RiDeleteBin5Fill size={25}/></button>
+                  <Link to={`/edit/${product._id}`}><button className='edit-button'><FiEdit size={25}/></button></Link>
+                </td>
               </tr>)
             }
           </tbody>

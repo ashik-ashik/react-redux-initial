@@ -9,7 +9,9 @@ import {
   DELETE_CONTENT,
   LOADER,
   ERROR,
-  RECENT_VIEWS
+  RECENT_VIEWS,
+  GET_SIGLE_CONTENT,
+  UPDATE_CONTENT
 } from "../ActionTypes/ActionTypes";
 
 const initialState = {
@@ -18,37 +20,54 @@ const initialState = {
   wishList: [],
   cartModal: false,
   cartMessage: '',
-  loader:true,
-  error:'',
-  recentView:[]
+  loader: true,
+  error: '',
+  recentView: [],
+  singleProduct:{},
+  productUpdated : false
 };
 
 const productReducer = (state = initialState, action) => {
-  const isSelected = state.cart.find(product => product.key === action.payload.key);
-  const oldProducts = state.cart.filter(product => product.key !== action.payload.key);
+  const isSelected = state.cart.find(product => product._id === action.payload._id);
+  const oldProducts = state.cart.filter(product => product._id !== action.payload._id);
   switch (action.type) {
     case LOADER:
-      return{
+      return {
         ...state,
         loader: !state.loader
       };
-      case ERROR:
-        return{
-          ...state,
-          error: action.payload,
+    case ERROR:
+      return {
+        ...state,
+        error: action.payload,
           loader: false
-        };
-      case GET_CONTENT:
+      };
+    case GET_CONTENT:
       return {
         ...state,
         products: action.payload,
-        loader:false,
-        error:''
+          loader: false,
+          error: '',
+          productUpdated: false
+      };
+    case GET_SIGLE_CONTENT:
+      return {
+        ...state,
+        singleProduct: action.payload,
+          loader: false,
+          error: ''
       };
     case ADD_CONTENT:
       return {
         ...state,
         products: [action.payload, ...state.products]
+
+      };
+    case UPDATE_CONTENT:
+      // const x = state.products
+      return {
+        ...state,
+        productUpdated: true
 
       };
     case DELETE_CONTENT:
@@ -76,7 +95,7 @@ const productReducer = (state = initialState, action) => {
               quantity: 1
             }]
         };
-        
+
       case CART_MODAL:
         return {
           ...state,
@@ -95,20 +114,20 @@ const productReducer = (state = initialState, action) => {
         case REMOVE_FROM_WISHLIST:
           return {
             ...state,
-            wishList: state.wishList.filter(product => product.key !== action.payload.key)
+            wishList: state.wishList.filter(product => product._id !== action.payload._id)
           };
-          case RECENT_VIEWS:
-            if(state.recentView.find(pro => pro._id === action.payload._id)){
-              return{
-                ...state,
-              }
-            }
-            return{
+        case RECENT_VIEWS:
+          if (state.recentView.find(pro => pro._id === action.payload._id)) {
+            return {
               ...state,
-              recentView:[...state.recentView, action.payload]
             }
-        default:
-          return state;
+          }
+          return {
+            ...state,
+            recentView: [...state.recentView, action.payload]
+          }
+          default:
+            return state;
   }
 }
 

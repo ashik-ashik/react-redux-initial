@@ -4,9 +4,64 @@
 
 .dashboard-home{
   @include griding((200px 1fr), 10px, start, stretch );
+  
   height: calc(100vh - 40px);
+  
+  .dashboard-menu-toggler{
+    display: none;
+  }
+  @media screen and (max-width:700px) {
+    @include griding((1fr), 10px, start, stretch );
+  }
+  
   .dashboard-sidebar{
     background: #e1e1e1;
+    position: relative;
+    @media screen and (max-width:700px) {
+      position: absolute;
+      height: 100vh;
+      width: 250px;
+      top: 0;
+      left: -250px;
+      transition: all .3s;
+      &.dashboard-mobile-sidebar{
+        top: 0;
+        left: 0px;
+        z-index: 99;
+      }
+
+      .dashboard-menu-toggler{
+        position: absolute;
+        top: 60px;
+        left: 100%;
+        background: #000;
+        border-top-right-radius: 100px;
+        border-end-end-radius: 100px;
+        @include flexing(row, center, center);
+        width: 40px;
+        height: 35px;
+        cursor: pointer;
+        *{
+          animation: toggle 1s linear infinite alternate;
+          color: #eee;
+        }
+        &.active{
+          svg{
+            width: 30px;
+            transform: rotate(90deg);
+          }
+        }
+        @keyframes toggle {
+          0%{
+            transform: translateX(-3px);
+          }
+          100%{
+            transform: translateX(3px);
+          }
+        }
+      }
+    }
+    
     h4{
       text-align: center;
       margin: 15px 0;
@@ -16,21 +71,25 @@
       li{
         width: 100%;
         a{
-          display: block;
-          padding: 10px;
+          @include flexing(row, flex-start, center);
+          padding: 15px 10px;
           font-size: 12px;
           letter-spacing: -1px;
           color: #222;
           transition: all .3s;
+          span{
+            display: inline-block;
+            margin-left: 8px;
+          }
           &.active,
           &:hover{
             background: #eee;
             padding-left: 15px;
           }
-          &.active::before{
-            content: '\2605';
-            margin-right: 3px;
-          }
+          // &.active::before{
+          //   content: '\2605';
+          //   margin-right: 3px;
+          // }
 
         }
       }
@@ -55,7 +114,9 @@
   
   .dashboard-overview{
     @include griding(repeat(3,1fr), 20px 10px, start, center);
-    
+    @media screen and (max-width:700px) {
+      @include griding(repeat(2,1fr), 20px 10px, start, center);
+    }
     div.item{
       height: 200px;
       background: #eee;

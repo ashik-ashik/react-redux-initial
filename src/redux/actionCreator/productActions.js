@@ -8,7 +8,9 @@ import {
   DELETE_CONTENT,
   LOADER,
   ERROR,
-  RECENT_VIEWS
+  RECENT_VIEWS,
+  GET_SIGLE_CONTENT,
+  UPDATE_CONTENT
 } from "../ActionTypes/ActionTypes"
 
 // fetc requests
@@ -18,9 +20,21 @@ export const loadProducts = data => {
     payload: data
   }
 }
+export const loadSingleProduct = data => {
+  return {
+    type: GET_SIGLE_CONTENT,
+    payload: data
+  }
+}
 export const addProduct = data => {
   return {
     type: ADD_CONTENT,
+    payload: data
+  }
+}
+export const editProduct = data => {
+  return {
+    type: UPDATE_CONTENT,
     payload: data
   }
 }
