@@ -54,6 +54,45 @@ This project was bootstrapped with [Visit Now](https://redux-emajon.netlify.app/
   ```js
   {test:"TEST"}
   ```
+## ** Action Types File**
+Action types file is simple `js` file. Which contain come variables. I should use this way to avoid typing mistakes whenever I will type same types several place. File look like:
+```js
+  //Create a file called actionTypes.js 
+  //there are two ways
+  //way one
+  const actionTypes = () => {
+    return {
+      LOAD_DATA:"LOAD_DATA",
+      DELETE_DATA:"DELETE_DATA",
+      // ....
+    };
+  };
+
+  // way two
+  export const LOAD_DATA= 'LOAD_DATA';
+  export const DELETE_DATA= 'DELETE_DATA';
+  // ....
+```
+I should import these types whenever I use actionTypes in any files.
+
+
+## **Action Creator Functions:**
+To have a neat and clean code I should use `action creator function`. These function creates `reducer` function's action, that's why these are called `action creator function`. These are basically simple function which will return necessary object for `dispatch()`, it will define which action will take and provide necessary data(data takes as parameter where it is called). It will call inside a `dispatch()`. The function how look like and how execute:
+
+**`actionCreator function look like`**
+```js
+export const loadData = (data) => {
+  type: LOAD_DATA,
+  payload: data
+};
+```
+**`Execution Action creator function`**
+```js
+  useEffect(()=>{
+    dispatch(loadData(data))
+  },[]);
+```
+
 
 ## `Redux DevTool Extention`
 * [x] At first I need to add the *`redux dev tool extention`* on the browser. 
@@ -88,6 +127,8 @@ If I have more than one reducer, What should I do to maintain or execute multi r
   ```js
     const store = createStore(rootReducer);
   ```
+
+
 ## **Middleware**
 Basically the term `middleware` denote interceptor. Which is executed between an action taking and that action execution. It works/executed after taking an action and just before the execution. Here, the middleware can change/modify data before it execution.
 #### Where do use middleware? and how?
@@ -134,7 +175,115 @@ export default middleWareName;
 
 
 ## **REDUX-THUNK**
-Basically `redux-thunk` is a middleware function. **`Redux-Thunk`** is used to `fetch` data from the live server through `API`. To ***install redux-thunk*** use:
+Basically `redux-thunk` is a kind of middleware function. **`Redux-Thunk`** is used to `fetch` data from the live server through `API`. To ***install redux-thunk*** use:
 ```
 npm i redux-thunk
 ```
+I should thunk directory/folder under the redux folder. A thunk function return a function which gets two parameters, **`First`** `dispatch` and `Second` on is `getState`. And this function is an *`async`* function. `Thunk` function can change or modify data before and after `fetch`. A `thunk` function look like:
+#### **`GET Request Thunk Function`**(simple):
+```js
+  const thunkFunction = () => {
+    return async(dispatch, getState) => {
+      const res = await fetch(`https://your-api-link/actual-path`);
+      const data = await res.json();
+
+      if(data.length){
+        dispatch(actionCreatorFunction(data));
+      };
+    };
+  };
+``` 
+#### **`GET Reqiest Thunk Function`** (with error handle):
+```js
+const thunkFunction = () => {
+  return async(dispatch, getState) => {
+    dispatch(loader());
+    try{
+      const res = await fetch(`https://your-api-link/actual-path`);  
+      const data = await res.json();
+
+      if(data.length){
+        dispatch(loadProducts(data));
+      }else{
+      }
+      
+    } catch (error){
+      dispatch(errorDisplay('OOOOPs!! Failed to fetch Data!!!'));
+    };
+  };
+};
+```
+**Note:** In above example, inside the `dispatch` function I called `loader()`, `loadProducts()` and `errorDisplay()` functions, these are actually **`actionCreator`** function.
+
+#### **`POST Request Thunk Function:`**
+```js
+  const postProduct = () => {
+  return async(dispatch, getState) => {
+     try{
+       const res = await fetch(`https://your-api-link/actual-path`, {
+         method:"POST",
+         headers:{
+           'Content-Type':"application/json"
+         },
+         body: JSON.stringify(product)
+       });
+       const data = await res.json();
+
+       if(data.acknowledged){
+         dispatch(addProduct({
+           _id: data.insertedId,
+           ...product
+         }));
+       };
+     }catch(err){
+      dispatch(errorDisplay('Failed to Possst!!!'));
+     }
+  };
+};
+``` 
+#### **`DELETE Request Thunk Function`**
+```js
+
+const deleteProduct = (id) => {
+  return async (dispatch, getState) => {
+    
+    const res = await fetch(`https://server-for-redux-emajon.vercel.app/delete_product/${id}`, {
+      method:"DELETE",
+      headers : {
+        'Content-type' : "application/json"
+      }
+    });
+    const data = await res.json();
+
+    if(data.acknowledged){
+      dispatch(removeProduct(id));
+    }
+  }
+};
+
+export default deleteProduct;
+```
+#### **`PUT Request Thunk Function`**
+```js
+export const updateProduct = (product, id) => {
+  return async(dispatch, getState) => {
+     dispatch(loader());
+     try{
+       const res = await fetch(`https://server-for-redux-emajon.vercel.app/edit_product/${id}`, {
+         method:"PUT",
+         headers:{
+           'Content-Type':"application/json"
+         },
+         body: JSON.stringify(product)
+       });
+       const data = await res.json();
+       if(data.acknowledged){
+         dispatch(editProduct(product));
+       };
+     }catch(err){
+      dispatch(errorDisplay('Failed to Possst!!!'));
+     }
+  };
+};
+```
+h

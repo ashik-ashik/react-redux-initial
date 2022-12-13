@@ -5,9 +5,7 @@ const fetchProducts = (id) => {
     dispatch(loader());
     try{
       //server-for-redux-emajon.vercel.app
-      const res = await fetch(`https://server-for-redux-emajon.vercel.app/products`).catch(err => {
-        dispatch(errorDisplay(err.message));
-      });
+      const res = await fetch(`https://server-for-redux-emajon.vercel.app/products`);
   
       const data = await res.json();
       if(data.length){
